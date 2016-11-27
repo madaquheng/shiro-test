@@ -93,6 +93,14 @@
             <artifactId>dropwizard-core</artifactId>
             <version>1.0.2</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-guice -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-guice</artifactId>
+            <version>1.4.0-RC2</version>
+        </dependency>
+
         <!-- Shiro uses SLF4J for logging.  We'll use the 'simple' binding
              in this example app.  See http://www.slf4j.org for more info. -->
         <dependency>

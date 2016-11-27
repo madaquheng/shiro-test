@@ -2,6 +2,8 @@ package com.shiroTest;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import com.shiroTest.resources.TestResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -22,11 +24,8 @@ import org.apache.shiro.util.Factory;
 public class TestServer extends Application<TestConfiguration> {
 
     public static void main(String[] args) throws Exception {
-        URL fileUrl = Resources.getResource("shiro.ini");
-
-        System.out.println( Resources.readLines(fileUrl, Charsets.UTF_8));
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
-        SecurityManager securityManager = factory.getInstance();
+        Injector injector = Guice.createInjector(new MyShiroModule());
+        SecurityManager securityManager = injector.getInstance(SecurityManager.class);
         SecurityUtils.setSecurityManager(securityManager);
         Subject currentUser = SecurityUtils.getSubject();
 
