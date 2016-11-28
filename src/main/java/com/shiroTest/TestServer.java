@@ -24,7 +24,7 @@ import org.apache.shiro.util.Factory;
 public class TestServer extends Application<TestConfiguration> {
 
     public static void main(String[] args) throws Exception {
-        Injector injector = Guice.createInjector(new MyShiroModule());
+        Injector injector = Guice.createInjector(new MyShiroModule(), new MyShiroAopModule());
         SecurityManager securityManager = injector.getInstance(SecurityManager.class);
         SecurityUtils.setSecurityManager(securityManager);
         Subject currentUser = SecurityUtils.getSubject();

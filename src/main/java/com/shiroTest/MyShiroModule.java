@@ -1,6 +1,8 @@
 package com.shiroTest;
 
 import com.google.inject.Provides;
+import com.google.inject.matcher.Matchers;
+import java.util.regex.Matcher;
 import org.apache.shiro.config.Ini;
 import org.apache.shiro.guice.ShiroModule;
 import org.apache.shiro.realm.text.IniRealm;
